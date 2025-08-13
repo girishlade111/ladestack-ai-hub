@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
@@ -47,9 +48,33 @@ export function Navbar() {
               Testimonials
             </button>
             <ThemeToggle />
-            <Button onClick={() => scrollToSection('newsletter')} className="btn-gradient">
-              Get Started
-            </Button>
+            
+            {/* Authentication */}
+            <SignedOut>
+              <SignInButton mode="modal">
+                <Button variant="outline" size="sm">
+                  Sign In
+                </Button>
+              </SignInButton>
+              <Button onClick={() => scrollToSection('newsletter')} className="btn-gradient">
+                Get Started
+              </Button>
+            </SignedOut>
+            <SignedIn>
+              <Button onClick={() => scrollToSection('newsletter')} className="btn-gradient">
+                Dashboard
+              </Button>
+              <UserButton 
+                appearance={{
+                  elements: {
+                    avatarBox: "w-8 h-8",
+                    userButtonPopoverCard: "bg-background border border-border",
+                    userButtonPopoverActionButton: "hover:bg-muted",
+                  }
+                }}
+                afterSignOutUrl="/"
+              />
+            </SignedIn>
           </div>
 
           {/* Mobile menu button */}
@@ -92,10 +117,34 @@ export function Navbar() {
             >
               Testimonials
             </button>
-            <div className="px-4">
-              <Button onClick={() => scrollToSection('newsletter')} className="btn-gradient w-full">
-                Get Started
-              </Button>
+            <div className="px-4 space-y-3">
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <Button variant="outline" size="sm" className="w-full">
+                    Sign In
+                  </Button>
+                </SignInButton>
+                <Button onClick={() => scrollToSection('newsletter')} className="btn-gradient w-full">
+                  Get Started
+                </Button>
+              </SignedOut>
+              <SignedIn>
+                <Button onClick={() => scrollToSection('newsletter')} className="btn-gradient w-full">
+                  Dashboard
+                </Button>
+                <div className="flex items-center justify-center pt-2">
+                  <UserButton 
+                    appearance={{
+                      elements: {
+                        avatarBox: "w-8 h-8",
+                        userButtonPopoverCard: "bg-background border border-border",
+                        userButtonPopoverActionButton: "hover:bg-muted",
+                      }
+                    }}
+                    afterSignOutUrl="/"
+                  />
+                </div>
+              </SignedIn>
             </div>
           </div>
         )}
