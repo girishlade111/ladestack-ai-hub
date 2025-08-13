@@ -15,9 +15,28 @@ export function DemoSection() {
     setIsLoading(true);
     setResponse("");
     
-    // Simulate AI response
-    setTimeout(() => {
-      const demoResponse = `// Generated React Component
+    try {
+      const response = await fetch('/api/gemini-chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: `Generate a React component for: ${prompt}. Please provide clean, modern code with TypeScript, using Tailwind CSS for styling. Include proper props and export the component.`
+        })
+      });
+
+      const data = await response.json();
+      
+      if (data.error) {
+        throw new Error(data.error);
+      }
+      
+      setResponse(data.response || 'No response generated');
+    } catch (error) {
+      console.error('Error calling Gemini API:', error);
+      // Fallback to demo response
+      const demoResponse = `// Generated React Component (Demo)
 import React from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -31,11 +50,14 @@ export function ${prompt.replace(/\s+/g, '')}Component() {
       <Button>Get Started</Button>
     </div>
   );
-}`;
+}
+
+// Note: This is a demo response. Connect with full AI for advanced features.`;
       
       setResponse(demoResponse);
+    } finally {
       setIsLoading(false);
-    }, 2000);
+    }
   };
 
   return (

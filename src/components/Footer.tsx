@@ -28,10 +28,10 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { name: "GitHub", href: "#", icon: Github },
-  { name: "LinkedIn", href: "#", icon: Linkedin },
-  { name: "Instagram", href: "#", icon: Instagram },
-  { name: "Email", href: "mailto:hello@ladestack.com", icon: Mail }
+  { name: "GitHub", href: "https://github.com/girishlade111", icon: Github },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/girish-lade-075bba201/", icon: Linkedin },
+  { name: "Instagram", href: "https://www.instagram.com/girish_lade_/", icon: Instagram },
+  { name: "Email", href: "mailto:girishlade111@gmail.com", icon: Mail }
 ];
 
 export function Footer() {

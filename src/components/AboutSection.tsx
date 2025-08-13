@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Instagram, Mail, Code, Palette, Cpu } from "lucide-react";
+import { Github, Linkedin, Instagram, Mail, Code, Palette, Cpu, Codepen } from "lucide-react";
 
 export function AboutSection() {
   return (
@@ -52,21 +52,35 @@ export function AboutSection() {
 
             {/* Social Links */}
             <div className="flex flex-wrap gap-4">
-              <Button variant="outline" size="sm" className="group">
-                <Github className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                GitHub
+              <Button variant="outline" size="sm" className="group" asChild>
+                <a href="https://github.com/girishlade111" target="_blank" rel="noopener noreferrer">
+                  <Github className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                  GitHub
+                </a>
               </Button>
-              <Button variant="outline" size="sm" className="group">
-                <Linkedin className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                LinkedIn
+              <Button variant="outline" size="sm" className="group" asChild>
+                <a href="https://www.linkedin.com/in/girish-lade-075bba201/" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                  LinkedIn
+                </a>
               </Button>
-              <Button variant="outline" size="sm" className="group">
-                <Instagram className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                Instagram
+              <Button variant="outline" size="sm" className="group" asChild>
+                <a href="https://www.instagram.com/girish_lade_/" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                  Instagram
+                </a>
               </Button>
-              <Button variant="outline" size="sm" className="group">
-                <Mail className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                Email
+              <Button variant="outline" size="sm" className="group" asChild>
+                <a href="https://codepen.io/Girish-Lade-the-looper" target="_blank" rel="noopener noreferrer">
+                  <Code className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                  CodePen
+                </a>
+              </Button>
+              <Button variant="outline" size="sm" className="group" asChild>
+                <a href="mailto:girishlade111@gmail.com">
+                  <Mail className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                  Email
+                </a>
               </Button>
             </div>
           </div>
