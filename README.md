@@ -1,73 +1,90 @@
-# Welcome to your Lovable project
+# LadeStack AI Hub
 
-## Project info
+A modern landing page for **LadeStack** — a hub of AI-powered development tools and free web utilities. Built with Vite, React, TypeScript, shadcn/ui, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/2709eaa2-6aac-4790-9d59-7c3087aaaf47
+## What it does
 
-## How can I edit this code?
+LadeStack AI Hub presents the LadeStack ecosystem: AI-powered tools for developers such as API testing, website building, file management, and more. The page includes:
 
-There are several ways of editing your application.
+- **Hero section** with product positioning and CTAs
+- **Features section** showcasing the AI tool lineup
+- **Demo section** giving a preview of the tools in action
+- **Projects section** highlighting LadeStack projects
+- **News section** with latest updates
+- **Testimonials section**
+- **Newsletter signup section**
+- **About section** and full footer
+- **Clerk authentication** for sign-in/sign-up
+- **Dark/light theme toggle** (next-themes)
 
-**Use Lovable**
+## Tech stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2709eaa2-6aac-4790-9d59-7c3087aaaf47) and start prompting.
+- Vite 5 + React 18 + TypeScript
+- shadcn/ui (Radix primitives) + Tailwind CSS + tailwindcss-animate
+- React Router v6, TanStack Query, React Hook Form + Zod
+- Clerk (@clerk/clerk-react) for authentication
+- Recharts, lucide-react icons, sonner toasts
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Quick start
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# install dependencies
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# start the dev server
 npm run dev
+
+# production build
+npm run build
+
+# preview the production build locally
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+Requires Node.js 18+.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Environment variables
 
-**Use GitHub Codespaces**
+| Variable | Description |
+|---|---|
+| `VITE_CLERK_PUBLISHABLE_KEY` | Clerk publishable key for authentication (get one free at [clerk.com](https://clerk.com)). The site builds and displays fine without it; sign-in buttons just won't function. |
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Copy `.env.example` → `.env` (create one if missing) and fill in the values.
 
-## What technologies are used for this project?
+## Project structure
 
-This project is built with:
+```
+├── index.html          # HTML entry, meta/OG tags
+├── src/
+│   ├── main.tsx        # app bootstrap (Clerk provider, theme, router)
+│   ├── App.tsx         # routes
+│   ├── pages/          # Index (landing), NotFound
+│   ├── components/     # Hero, Features, Demo, Projects, News,
+│   │                   # Testimonials, Newsletter, About, Footer, Navbar…
+│   │   └── ui/         # shadcn/ui primitives
+│   ├── hooks/ lib/     # shared hooks & utilities
+│   └── assets/         # images
+├── public/             # static assets
+├── supabase/           # supabase functions (optional backend)
+└── vite.config.ts      # Vite config
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Deployment
 
-## How can I deploy this project?
+Static output from `npm run build` lands in `dist/` and can be hosted on any static host (GitHub Pages, Cloudflare Pages, Netlify, Vercel). Example for GitHub Pages under the `/ladestack-ai-hub/` subpath — set the Vite base accordingly:
 
-Simply open [Lovable](https://lovable.dev/projects/2709eaa2-6aac-4790-9d59-7c3087aaaf47) and click on Share -> Publish.
+```ts
+// vite.config.ts
+export default defineConfig({
+  base: '/ladestack-ai-hub/',
+  // ...
+})
+```
 
-## Can I connect a custom domain to my Lovable project?
+then build and publish `dist/`.
 
-Yes, you can!
+Originally generated with [Lovable](https://lovable.dev).
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Built by Girish Lade · [ladestack.in](https://ladestack.in)
