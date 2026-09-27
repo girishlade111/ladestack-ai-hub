@@ -9,6 +9,9 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  // deployed to GitHub Pages at https://girishlade111.github.io/ladestack-ai-hub/
+  // remove `base` (or set it to '/') for root-domain / Vercel / Netlify deploys
+  base: '/ladestack-ai-hub/',
   plugins: [
     react(),
     mode === 'development' &&
